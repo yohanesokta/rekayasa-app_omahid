@@ -40,25 +40,31 @@ export default async function SearchPage({
             <Link href="/" className="mt-4 inline-block text-[#0088FF] hover:underline">Return to Home</Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {products.map((product) => (
-              <div key={product.id} className="group cursor-pointer">
-                <div className="aspect-square bg-slate-100 flex items-center justify-center text-slate-400 relative overflow-hidden rounded-md mb-4">
+              <a 
+                key={product.id} 
+                href={`/products/${product.id}`} 
+                className="group flex flex-col h-full cursor-pointer"
+              >
+                <div className="aspect-square bg-slate-100 flex items-center justify-center text-slate-400 relative overflow-hidden rounded-2xl mb-4 border border-slate-50 shadow-sm group-hover:shadow-md transition-all">
                   {product.images && product.images.length > 0 ? (
-                    <img src={product.images[0].url} alt={product.name} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+                    <img 
+                      src={product.images[0].url} 
+                      alt={product.name} 
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" 
+                    />
                   ) : (
-                    <span className="text-sm">No Image</span>
+                    <span className="text-xs font-bold uppercase tracking-widest">No Image</span>
                   )}
-                  <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
                 </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-semibold text-slate-900 group-hover:text-[#0088FF] transition-colors line-clamp-1">{product.name}</h3>
-                    <p className="text-xs text-slate-500 mt-1 uppercase tracking-wider">{product.category}</p>
-                  </div>
-                  <p className="font-bold text-[#070864]">Rp {product.price.toLocaleString('id-ID')}</p>
+                <div className="flex flex-col gap-1 px-1">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{product.category || 'Furniture'}</p>
+                  <h3 className="font-bold text-slate-900 group-hover:text-[#0088FF] transition-colors line-clamp-1">{product.name}</h3>
+                  <p className="text-sm font-black text-[#070864]">Rp {product.price.toLocaleString('id-ID')}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         )}

@@ -89,7 +89,7 @@ export default async function Home() {
               </div>
             )}
             {products.map((p) => (
-              <div key={p.id} className="group cursor-pointer">
+              <Link key={p.id} href={`/products/${p.id}`} className="group cursor-pointer">
                 <div className="aspect-square bg-slate-50 flex items-center justify-center text-slate-400 relative overflow-hidden rounded-3xl border border-slate-100 mb-4 shadow-sm group-hover:shadow-xl group-hover:shadow-blue-900/5 transition-all duration-500">
                   {p.images[0] ? (
                     <img 
@@ -103,12 +103,12 @@ export default async function Home() {
                   
                   {/* Hover Actions */}
                   <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                     <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#070864] shadow-lg hover:scale-110 transition-transform">
+                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#070864] shadow-lg hover:scale-110 transition-transform">
                         <ShoppingCart className="w-5 h-5" />
-                     </button>
-                     <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-500 shadow-lg hover:scale-110 transition-transform">
+                     </div>
+                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-500 shadow-lg hover:scale-110 transition-transform">
                         <Heart className="w-5 h-5" />
-                     </button>
+                     </div>
                   </div>
                 </div>
                 <div className="space-y-1">
@@ -116,7 +116,7 @@ export default async function Home() {
                   <h4 className="font-bold text-slate-900 text-lg group-hover:text-[#0088FF] transition-colors line-clamp-1">{p.name}</h4>
                   <p className="text-base font-black text-[#070864]">Rp {p.price.toLocaleString('id-ID')}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
