@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manajemen Stok</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  background: #f4f7fb;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #eee;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.menu li {
+  list-style: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.menu li.active {
+  background: #1f3c88;
+  color: white;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* TITLE */
+.title h1 {
+  font-size: 28px;
+  color: #1f3c88;
+}
+
+.title p {
+  color: gray;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  flex: 1;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.card h4 {
+  color: gray;
+  font-size: 13px;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.green { color: green; }
+.red { color: red; }
+
+/* BIG CARD */
+.big-card {
+  flex: 2;
+  background: #1f3c88;
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.progress {
+  background: rgba(255,255,255,0.2);
+  height: 8px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  width: 82%;
+  height: 100%;
+  background: white;
+  border-radius: 10px;
+}
+
+/* BUTTON */
+.btn {
+  background: #1f3c88;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* TABLE */
+.table-box {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+}
+
+th {
+  color: gray;
+  font-size: 13px;
+}
+
+tr {
+  border-bottom: 1px solid #eee;
+}
+
+/* STATUS */
+.status {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.available {
+  color: green;
+}
+
+.low {
+  color: red;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 20px;
+  background: #eaf0f7;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.footer input {
+  padding: 10px;
+  width: 70%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.footer button {
+  padding: 10px;
+  background: #1f3c88;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>OMAHi.ID</h2>
+  <ul class="menu">
+    <li>Beranda</li>
+    <li>Produk</li>
+    <li>Pesanan</li>
+    <li>Custom Order</li>
+    <li class="active">Stok</li>
+    <li>User</li>
+  </ul>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HEADER -->
+  <div class="header">
+    <input class="search" placeholder="Cari pesanan, pelanggan, atau ID...">
+    <button class="btn">+ Update Stok</button>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title">
+    <h1>Manajemen Stok</h1>
+    <p>Pantau dan kelola inventaris furnitur secara real-time</p>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+    <div class="card">
+      <h4>Total Produk</h4>
+      <p>1,284</p>
+      <small class="green">+12% bulan ini</small>
+    </div>
+
+    <div class="card">
+      <h4>Stok Rendah</h4>
+      <p class="red">12</p>
+      <small class="red">Perlu tindakan</small>
+    </div>
+
+    <div class="big-card">
+      <h4>Kapasitas Gudang</h4>
+      <p>82%</p>
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-box">
+    <h3>Daftar Inventaris</h3>
+
+    <table>
+      <tr>
+        <th>Nama Produk</th>
+        <th>Kategori</th>
+        <th>Jumlah</th>
+        <th>Status</th>
+      </tr>
+
+      <tr>
+        <td>Kursi Jati Scandinavian</td>
+        <td>Ruang Tamu</td>
+        <td>45 Unit</td>
+        <td class="available">● Tersedia</td>
+      </tr>
+
+      <tr>
+        <td>Meja Kerja Oak</td>
+        <td>Ruang Kerja</td>
+        <td class="low">4 Unit</td>
+        <td class="low">● Stok Rendah</td>
+      </tr>
+
+      <tr>
+        <td>Kasur Velvet Cloud</td>
+        <td>Kamar Tidur</td>
+        <td>18 Unit</td>
+        <td class="available">● Tersedia</td>
+      </tr>
+
+      <tr>
+        <td>Lampu Industrial Black</td>
+        <td>Dekorasi</td>
+        <td class="low">2 Unit</td>
+        <td class="low">● Stok Rendah</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <h3>Subscribe to our newsletter</h3>
+    <input type="text" placeholder="Enter your email">
+    <button>Subscribe</button>
+  </div>
+
+</div>
+
+</body>
+</html>

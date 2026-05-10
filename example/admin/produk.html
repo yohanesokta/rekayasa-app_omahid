@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMAH.ID Admin - Produk</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{display:flex;background:#F5F7FA;color:#1F2937}
+
+/* SIDEBAR */
+.sidebar{
+  width:260px;
+  height:100vh;
+  background:#fff;
+  padding:24px 16px;
+  border-right:1px solid #E5E7EB;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between
+}
+
+.logo{font-weight:700;color:#1E3A8A;font-size:20px}
+.logo small{display:block;font-size:12px;color:#9CA3AF}
+
+.menu{margin-top:30px}
+.menu a{
+  display:flex;
+  padding:12px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#374151;
+  margin-bottom:6px;
+  font-size:14px
+}
+.menu a.active{background:#1E3A8A;color:#fff;font-weight:600}
+
+.logout{font-size:14px;color:#6B7280}
+
+/* MAIN */
+.main{flex:1;padding:24px}
+
+/* 🔥 TOPBAR BARU */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px
+}
+
+.search{
+  width:420px;
+  background:#EEF2F7;
+  border:none;
+  padding:12px 16px;
+  border-radius:999px
+}
+
+.admin-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.icon{
+  width:20px;
+  height:20px;
+  cursor:pointer;
+}
+
+.admin-profile{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+}
+
+.admin-profile img{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* BUTTON */
+.action-btn{
+  background:#1E3A8A;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer
+}
+
+.title{font-size:32px;font-weight:700;color:#1E3A8A}
+.subtitle{color:#6B7280;margin-top:6px}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin:20px 0
+}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.04)
+}
+
+.card h4{font-size:12px;color:#9CA3AF}
+.card h2{margin-top:8px;font-size:22px}
+
+.red{color:#DC2626}
+.blue{background:#1E3A8A;color:#fff}
+
+/* TABS */
+.tabs{display:flex;gap:10px;margin:20px 0}
+.tab{
+  padding:8px 14px;
+  border-radius:999px;
+  background:#EEF2F7;
+  font-size:13px;
+  cursor:pointer
+}
+.tab.active{background:#1E3A8A;color:#fff}
+
+/* TABLE */
+.table-box{
+  background:#fff;
+  border-radius:20px;
+  padding:20px
+}
+
+table{width:100%;border-collapse:collapse}
+th,td{padding:14px;font-size:13px}
+th{color:#9CA3AF;text-align:left}
+tr{border-bottom:1px solid #F1F5F9}
+
+/* PRODUCT */
+.product{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+
+.product img{
+  width:40px;
+  height:40px;
+  border-radius:8px;
+  object-fit:cover;
+}
+
+.badge{
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:6px;
+  background:#EEF2F7
+}
+
+.low{
+  color:#DC2626;
+  font-weight:600
+}
+
+/* PAGINATION */
+.pagination{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:10px
+}
+
+.page{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#EEF2F7;
+  cursor:pointer
+}
+.page.active{background:#1E3A8A;color:#fff}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div>
+    <div class="logo">OMAH.ID <small>Dashboard Admin</small></div>
+
+    <div class="menu">
+      <a href="dashboard.html">Beranda</a>
+      <a class="active">Produk</a>
+      <a href="daftar-pesanan.html">Pesanan</a>
+      <a>Custom Order</a>
+      <a>Stok</a>
+      <a>User</a>
+    </div>
+  </div>
+
+  <div class="logout">Keluar</div>
+</div>
+
+<div class="main">
+
+<!-- 🔥 TOPBAR FIX -->
+<div class="topbar">
+  <input class="search" placeholder="Cari pesanan, pelanggan, atau ID...">
+
+  <div class="admin-box">
+    <img src="assets/bell.png" class="icon">
+    <img src="assets/settings.png" class="icon">
+
+    <div class="admin-profile">
+      <img src="assets/admin.jpg">
+      <span>Administrator</span>
+    </div>
+  </div>
+</div>
+
+<div class="title">Daftar Produk</div>
+<div class="subtitle">Kelola katalog furnitur eksklusif OMAH.ID dengan presisi arsitektural.</div>
+
+<div class="cards">
+  <div class="card"><h4>Total Katalog</h4><h2>1,248</h2></div>
+  <div class="card"><h4>Stok Rendah</h4><h2 class="red">14</h2></div>
+  <div class="card"><h4>Kategori Aktif</h4><h2>8</h2></div>
+  <div class="card blue"><h4>Nilai Inventaris</h4><h2>Rp 2.4B</h2></div>
+</div>
+
+<div class="tabs">
+  <div class="tab active">Semua Produk</div>
+  <div class="tab">Tersedia</div>
+  <div class="tab">Habis</div>
+</div>
+
+<div class="table-box">
+
+<table>
+<tr>
+<th>Produk</th>
+<th>Kategori</th>
+<th>Harga</th>
+<th>Stok</th>
+<th>Aksi</th>
+</tr>
+
+<tr>
+<td>
+<div class="product">
+<img src="assets/kursi.png">
+<div>
+<b>Kursi Jati Scandinavian</b><br>
+<small>SKU: OMAH-CH-001</small>
+</div>
+</div>
+</td>
+<td><span class="badge">Ruang Tamu</span></td>
+<td>Rp 2.450.000</td>
+<td>42</td>
+<td>✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td>
+<div class="product">
+<img src="assets/sofa velvet.jpg">
+<div>
+<b>Sofa Velvet Emerald</b><br>
+<small>SKU: OMAH-SF-082</small>
+</div>
+</div>
+</td>
+<td><span class="badge">Ruang Keluarga</span></td>
+<td>Rp 8.900.000</td>
+<td class="low">3</td>
+<td>✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td>
+<div class="product">
+<img src="assets/meja makan.png">
+<div>
+<b>Meja Makan Carrara</b><br>
+<small>SKU: OMAH-TB-115</small>
+</div>
+</div>
+</td>
+<td><span class="badge">Ruang Makan</span></td>
+<td>Rp 12.200.000</td>
+<td>12</td>
+<td>✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td>
+<div class="product">
+<img src="assets/lampu tidur.png">
+<div>
+<b>Lampu Tidur Artisan</b><br>
+<small>SKU: OMAH-LP-202</small>
+</div>
+</div>
+</td>
+<td><span class="badge">Pencahayaan</span></td>
+<td>Rp 850.000</td>
+<td>88</td>
+<td>✏️ 🗑️</td>
+</tr>
+
+</table>
+
+<div class="pagination">
+<div class="page">1</div>
+<div class="page active">2</div>
+<div class="page">3</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

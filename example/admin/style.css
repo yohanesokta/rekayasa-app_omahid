@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f5f6fa;
+}
+
+/* LOGIN */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    text-align: center;
+}
+
+.logo {
+    color: #1f3c88;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    width: 300px;
+}
+
+.card input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.card button {
+    width: 100%;
+    padding: 10px;
+    background: #1f3c88;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    background: #1f3c88;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebar li.active {
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+}
+
+.main {
+    flex: 1;
+    padding: 30px;
+}
+
+/* CARD */
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card-box {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 200px;
+}
+
+.card-box.red {
+    color: red;
+}
+
+/* CHART */
+.chart {
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.fake-chart {
+    height: 150px;
+    background: linear-gradient(to right, #1f3c88, transparent);
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* FORM */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+}
+
+.form input, .form textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.form button {
+    background: #1f3c88;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+}

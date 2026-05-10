@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LogOut, LayoutDashboard, Package, Users, Settings, User, Box } from 'lucide-react'
+import { LogOut, LayoutDashboard, Package, Users, Settings, User, Box, ShoppingCart } from 'lucide-react'
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
@@ -55,6 +55,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (pathname.includes('/products/add')) title = "Tambah Produk Baru"
   else if (pathname.includes('/products')) title = "Daftar Produk"
   else if (pathname.includes('/stock')) title = "Manajemen Stok"
+  else if (pathname.includes('/orders')) title = "Pesanan"
+  else if (pathname.includes('/users')) title = "Manajemen Pengguna"
 
   return (
     <div className="min-h-screen bg-[#F7F9FD] flex">
@@ -74,6 +76,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </Link>
           <Link href="/dashboard/stock" className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${pathname.includes('/dashboard/stock') ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'}`}>
             <Box className="w-5 h-5" /> Manajemen Stok
+          </Link>
+          <Link href="/dashboard/orders" className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${pathname.includes('/dashboard/orders') ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'}`}>
+            <ShoppingCart className="w-5 h-5" /> Pesanan
+          </Link>
+          <Link href="/dashboard/users" className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${pathname.includes('/dashboard/users') ? 'bg-white/10 text-white' : 'text-blue-200 hover:bg-white/5 hover:text-white'}`}>
+            <Users className="w-5 h-5" /> Pengguna
           </Link>
         </nav>
 

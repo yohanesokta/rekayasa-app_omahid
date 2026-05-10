@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Detail Pesanan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{display:flex;background:#F5F7FA;color:#1F2937}
+
+.sidebar{width:260px;height:100vh;background:#fff;padding:24px 16px;border-right:1px solid #E5E7EB;display:flex;flex-direction:column;justify-content:space-between}
+.logo{font-weight:700;color:#1E3A8A;font-size:20px}
+.logo small{display:block;font-size:12px;color:#9CA3AF}
+.menu{margin-top:30px}
+.menu a{display:flex;padding:12px;border-radius:10px;text-decoration:none;color:#374151;margin-bottom:6px;font-size:14px}
+.menu a.active{background:#1E3A8A;color:#fff;font-weight:600}
+.logout{font-size:14px;color:#6B7280}
+
+.main{flex:1;padding:24px}
+
+/* HAPUS TOPBAR LAMA */
+
+/* HEADER */
+.breadcrumb{font-size:12px;color:#9CA3AF;margin-bottom:10px}
+.title{font-size:30px;font-weight:700;color:#1E3A8A}
+
+.actions{display:flex;gap:10px;margin:10px 0 20px}
+.btn{padding:10px 16px;border-radius:999px;border:none;font-weight:600}
+.btn.gray{background:#E5E7EB}
+.btn.blue{background:#1E3A8A;color:#fff}
+
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+.card{background:#fff;border-radius:20px;padding:20px;box-shadow:0 10px 20px rgba(0,0,0,0.04);margin-bottom:20px}
+.card h3{font-size:16px;margin-bottom:15px}
+
+.product{display:flex;justify-content:space-between;margin-bottom:15px}
+.product-info{display:flex;gap:10px}
+
+.product img{
+  width:60px;
+  height:60px;
+  border-radius:12px;
+  object-fit:cover;
+}
+
+.small{font-size:12px;color:#6B7280}
+
+.box-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+.status-box{background:#1E3A8A;color:#fff;border-radius:20px;padding:20px}
+
+.timeline div{margin-bottom:10px;font-size:13px}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div>
+    <div class="logo">OMAH.ID <small>Dashboard Admin</small></div>
+    <div class="menu">
+      <a href="dashboard.html">Beranda</a>
+      <a href="produk.html">Produk</a>
+      <a class="active">Pesanan</a>
+      <a>Custom Order</a>
+      <a>Stok</a>
+      <a>User</a>
+    </div>
+  </div>
+  <div class="logout">Keluar</div>
+</div>
+
+<div class="main">
+
+<!-- 🔥 TOPBAR GLOBAL -->
+<div id="topbar"></div>
+
+<div class="breadcrumb">Pesanan / INV-2023-0892</div>
+<div class="title">Detail Pesanan</div>
+
+<div class="actions">
+  <button class="btn gray">Cetak Invoice</button>
+  <button class="btn blue">Update Status</button>
+</div>
+
+<div class="grid">
+
+<div>
+
+<div class="card">
+<h3>Produk yang dibeli</h3>
+
+<div class="product">
+<div class="product-info">
+<img src="assets/sofa velvet.jpg">
+<div>
+<b>Kursi Beludru Emerald</b>
+<div class="small">Material: Kain Beludru</div>
+</div>
+</div>
+<div><b>Rp3.250.000</b></div>
+</div>
+
+<div class="product">
+<div class="product-info">
+<img src="assets/lampu tidur.png">
+<div>
+<b>Lampu Tidur Artisan</b>
+<div class="small">Material: Metal + Kaca</div>
+</div>
+</div>
+<div><b>Rp850.000</b></div>
+</div>
+
+</div>
+
+<div class="box-row">
+
+<div class="card">
+<h3>Informasi Pengiriman</h3>
+<p class="small">JNE Express - Cargo</p>
+<p><b>JT12903841102</b></p>
+<p class="small">15 Oktober 2023</p>
+</div>
+
+<div class="card">
+<h3>Log Aktivitas</h3>
+<div class="timeline">
+<div>Pesanan Dikirim</div>
+<div>Pembayaran Terverifikasi</div>
+<div>Pesanan Dibuat</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="card">
+<h3>Data Pelanggan</h3>
+<p><b>Adinda Rahmawati</b></p>
+<p class="small">adinda@email.com</p>
+<p class="small">+62 812-3456-7890</p>
+<p class="small">Jakarta</p>
+</div>
+
+<div class="status-box">
+<h3>Ringkasan Pembayaran</h3>
+<p>Subtotal Rp8.750.000</p>
+<p>Ongkir Rp350.000</p>
+<p>Asuransi Rp45.000</p>
+<hr style="margin:10px 0;border:1px solid rgba(255,255,255,0.2)">
+<h2>Rp9.145.000</h2>
+<p class="small">Bank Transfer (BCA)</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+fetch('topbar.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('topbar').innerHTML = data;
+  });
+</script>
+
+</body>
+</html>

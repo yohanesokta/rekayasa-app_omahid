@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Admin</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f2f4f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: #1f2937;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo h1 {
+      font-size: 28px;
+      color: #1e3a8a;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .logo p {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      width: 350px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .card p.subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 12px;
+      color: #6b7280;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* INPUT DENGAN ICON */
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      background: #EEF2F7;
+      border-radius: 999px;
+      padding: 10px 14px;
+      gap: 10px;
+    }
+
+    .input-wrapper input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 13px;
+      background: transparent;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      opacity: 0.6;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .row a {
+      text-decoration: none;
+      color: #2563eb;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1e40af;
+    }
+
+    .dots {
+      margin-top: 20px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .dots span {
+      width: 10px;
+      height: 10px;
+      background: #d1d5db;
+      border-radius: 50%;
+    }
+
+    .footer {
+      font-size: 10px;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <h1>OMAH.ID</h1>
+    <p>AKSES KHUSUS ADMIN</p>
+  </div>
+
+  <div class="card">
+    <h2>Masuk ke Dashboard</h2>
+    <p class="subtitle">Silakan Login Untuk Admin</p>
+
+    <!-- EMAIL -->
+    <div class="form-group">
+      <label>Email</label>
+      <div class="input-wrapper">
+        <img src="assets/logo email login.jpg" class="icon">
+        <input type="email" placeholder="admin@omah.id">
+      </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="form-group">
+      <div class="row">
+        <label>Kata Sandi</label>
+        <a href="#">Lupa Password?</a>
+      </div>
+      <div class="input-wrapper">
+        <img src="assets/kunci login.png" class="icon">
+        <input type="password" placeholder="********">
+      </div>
+    </div>
+
+    <div class="checkbox">
+      <input type="checkbox">
+      <span>Tetap masuk selama 30 hari</span>
+    </div>
+
+    <!-- LOGIN BUTTON -->
+    <button class="btn" onclick="window.location.href='dashboard.html'">
+      Masuk
+    </button>
+  </div>
+
+  <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">
+    © 2024 OMAH.ID ADMIN DASHBOARD
+  </div>
+
+</body>
+</html>

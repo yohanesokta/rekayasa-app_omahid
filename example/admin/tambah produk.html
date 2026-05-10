@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tambah Produk</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{display:flex;background:#F5F7FA;color:#1F2937}
+
+/* SIDEBAR */
+.sidebar{width:260px;height:100vh;background:#fff;padding:24px 16px;border-right:1px solid #E5E7EB;display:flex;flex-direction:column;justify-content:space-between}
+.logo{font-weight:700;color:#1E3A8A;font-size:20px}
+.logo small{display:block;font-size:12px;color:#9CA3AF}
+.menu{margin-top:30px}
+.menu a{display:flex;padding:12px;border-radius:10px;text-decoration:none;color:#374151;margin-bottom:6px;font-size:14px}
+.menu a.active{background:#1E3A8A;color:#fff;font-weight:600}
+.logout{font-size:14px;color:#6B7280}
+
+/* MAIN */
+.main{flex:1;padding:24px}
+
+/* 🔥 TOPBAR FIX */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px
+}
+
+.search{
+  width:420px;
+  background:#EEF2F7;
+  border:none;
+  padding:12px 16px;
+  border-radius:999px
+}
+
+.admin-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.icon{
+  width:20px;
+  height:20px;
+  cursor:pointer;
+}
+
+.admin-profile{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+}
+
+.admin-profile img{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* TEXT */
+.breadcrumb{font-size:12px;color:#9CA3AF;margin-bottom:10px}
+.title{font-size:28px;font-weight:700;margin-bottom:5px}
+.subtitle{color:#6B7280;margin-bottom:20px}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+
+/* CARD */
+.card, .small-card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.04);
+  margin-bottom:20px;
+}
+
+/* HEADER ICON */
+.card-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.card-header img{
+  width:30px;
+  height:30px;
+  background:#EEF2FF;
+  padding:10px;
+  border-radius:15px;
+  object-fit:contain;
+}
+
+.card-header h3{font-size:16px}
+
+/* FORM */
+.input{width:100%;padding:12px;border-radius:12px;border:none;background:#EEF2F7;margin-top:6px}
+.label{font-size:12px;color:#6B7280}
+.row{display:flex;gap:10px}
+.textarea{height:100px}
+
+/* UPLOAD */
+.upload-box{
+  width:80px;
+  height:80px;
+  border-radius:16px;
+  background:#EEF2F7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+}
+
+/* BUTTON */
+.btn-primary{width:100%;background:#1E3A8A;color:#fff;padding:14px;border-radius:999px;border:none;font-weight:600}
+.btn-secondary{text-align:center;margin-top:10px;color:#6B7280}
+
+/* CHIP */
+.chip{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#EEF2F7;
+  margin:5px;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div>
+    <div class="logo">OMAH.ID <small>Dashboard Admin</small></div>
+
+    <div class="menu">
+      <a href="dashboard.html">Beranda</a>
+      <a class="active">Produk</a>
+      <a href="daftar-pesanan.html">Pesanan</a>
+      <a>Custom Order</a>
+      <a>Stok</a>
+      <a>User</a>
+    </div>
+  </div>
+
+  <div class="logout">Keluar</div>
+</div>
+
+<div class="main">
+
+<!-- 🔥 TOPBAR -->
+<div class="topbar">
+  <input class="search" placeholder="Cari pesanan, pelanggan, atau ID...">
+
+  <div class="admin-box">
+    <img src="assets/bell.png" class="icon">
+    <img src="assets/settings.png" class="icon">
+
+    <div class="admin-profile">
+      <img src="assets/admin.jpg">
+      <span>Administrator</span>
+    </div>
+  </div>
+</div>
+
+<div class="breadcrumb">Produk > Tambah Produk Baru</div>
+<div class="title">Tambah Produk Baru</div>
+<div class="subtitle">Mendaftarkan unit furnitur baru ke dalam katalog arsip OMAH.ID</div>
+
+<div class="grid">
+
+<!-- LEFT -->
+<div>
+
+  <div class="card">
+    <div class="card-header">
+      <img src="assets/informasi.png">
+      <h3>Informasi Utama</h3>
+    </div>
+
+    <div class="label">Nama Produk</div>
+    <input class="input" placeholder="Contoh: Kursi Jati Minimalis 'Akar'">
+
+    <div class="row">
+      <div style="flex:1">
+        <div class="label">Kategori</div>
+        <input class="input" placeholder="Pilih Kategori">
+      </div>
+      <div style="flex:1">
+        <div class="label">Bahan Material</div>
+        <input class="input" placeholder="Contoh: Kayu Jati">
+      </div>
+    </div>
+
+    <div class="label">Deskripsi Produk</div>
+    <textarea class="input textarea" placeholder="Tuliskan spesifikasi detail..."></textarea>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <img src="assets/stok.png">
+      <h3>Stok & Variasi</h3>
+    </div>
+
+    <div class="row">
+      <input class="input" placeholder="Harga (Rp)">
+      <input class="input" placeholder="Jumlah Stok">
+      <input class="input" placeholder="SKU">
+    </div>
+
+    <div style="margin-top:10px">
+      <div class="label">Variasi Produk</div>
+      <span class="chip">Natural Jati</span>
+      <span class="chip">Black Matte</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- RIGHT -->
+<div>
+
+  <div class="small-card">
+    <div class="card-header">
+      <img src="assets/dimensi.png">
+      <h3>Dimensi (cm)</h3>
+    </div>
+
+    <div class="row">
+      <input class="input" placeholder="Panjang">
+      <input class="input" placeholder="Lebar">
+      <input class="input" placeholder="Tinggi">
+    </div>
+
+    <div class="label">Berat (kg)</div>
+    <input class="input" placeholder="0.0">
+  </div>
+
+  <div class="small-card">
+    <div class="card-header">
+      <img src="assets/galeri.png">
+      <h3>Galeri Produk</h3>
+    </div>
+
+    <div class="row">
+      <div class="upload-box">+</div>
+      <div class="upload-box">+</div>
+    </div>
+  </div>
+
+  <button class="btn-primary">SIMPAN PRODUK</button>
+  <div class="btn-secondary">BATAL</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

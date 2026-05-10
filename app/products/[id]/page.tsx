@@ -1,8 +1,9 @@
 import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
-import { Heart, ShoppingCart, Tag } from 'lucide-react'
+import { Tag } from 'lucide-react'
 import Link from 'next/link'
+import ProductActions from './ProductActions'
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -106,25 +107,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             )}
 
             {/* Actions */}
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                className="flex-1 h-14 bg-green-600 hover:bg-green-700 text-white font-black text-sm rounded-xl tracking-widest transition-all shadow-lg shadow-green-400/30"
-              >
-                BELI SEKARANG
-              </button>
-              <button
-                className="w-14 h-14 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center text-[#070864] hover:border-[#0088FF] hover:text-[#0088FF] transition-all shadow-sm"
-                title="Tambah ke Keranjang"
-              >
-                <ShoppingCart className="w-5 h-5" />
-              </button>
-              <button
-                className="w-14 h-14 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center text-slate-400 hover:border-red-300 hover:text-red-500 transition-all shadow-sm"
-                title="Wishlist"
-              >
-                <Heart className="w-5 h-5" />
-              </button>
-            </div>
+            <ProductActions productId={product.id} />
           </div>
         </div>
 

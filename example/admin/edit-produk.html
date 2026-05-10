@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ubah Detail Produk</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{display:flex;background:#F5F7FA;color:#1F2937}
+
+/* SIDEBAR */
+.sidebar{width:260px;height:100vh;background:#fff;padding:24px 16px;border-right:1px solid #E5E7EB;display:flex;flex-direction:column;justify-content:space-between}
+.logo{font-weight:700;color:#1E3A8A;font-size:20px}
+.logo small{display:block;font-size:12px;color:#9CA3AF}
+.menu{margin-top:30px}
+.menu a{display:flex;padding:12px;border-radius:10px;text-decoration:none;color:#374151;margin-bottom:6px;font-size:14px}
+.menu a.active{background:#1E3A8A;color:#fff;font-weight:600}
+.logout{font-size:14px;color:#6B7280}
+
+/* MAIN */
+.main{flex:1;padding:24px}
+
+/* HEADER */
+.breadcrumb{font-size:12px;color:#9CA3AF;margin-bottom:10px}
+.title{font-size:30px;font-weight:700;color:#1E3A8A}
+.subtitle{color:#6B7280;margin-top:6px;margin-bottom:20px;font-style:italic}
+
+.actions{display:flex;gap:10px;margin-bottom:20px}
+.btn{padding:10px 18px;border-radius:999px;border:none;font-weight:600}
+.btn.gray{background:#E5E7EB}
+.btn.blue{background:#1E3A8A;color:#fff}
+
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.04);
+  margin-bottom:20px
+}
+
+/* HEADER ICON */
+.card-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.card-header img{
+  width:28px;
+  height:28px;
+  padding:6px;
+  background:#EEF2FF;
+  border-radius:10px;
+  object-fit:contain;
+}
+
+.card-header h3{
+  font-size:16px;
+}
+
+/* FORM */
+.label{font-size:12px;color:#6B7280;margin-top:10px}
+.input{width:100%;padding:12px;border-radius:14px;border:none;background:#EEF2F7;margin-top:6px}
+.row{display:flex;gap:10px}
+.textarea{height:110px}
+
+/* GALERI */
+.gallery img{width:100%;border-radius:14px;margin-bottom:10px}
+.upload{height:80px;border-radius:14px;background:#EEF2F7;display:flex;align-items:center;justify-content:center}
+
+/* STATUS */
+.status-box{background:#1E3A8A;color:#fff;border-radius:20px;padding:20px}
+.toggle{display:flex;justify-content:space-between;align-items:center;margin:10px 0}
+.switch{width:36px;height:18px;border-radius:999px;background:#4ADE80;position:relative}
+.switch::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;top:2px;right:2px}
+
+/* COLOR DOT */
+.colors{display:flex;gap:8px;margin-top:6px}
+.dot{width:20px;height:20px;border-radius:50%}
+
+/* DELETE */
+.delete{background:#FECACA;color:#991B1B;padding:12px;border-radius:14px;text-align:center;margin-top:10px}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div>
+    <div class="logo">OMAH.ID <small>Dashboard Admin</small></div>
+    <div class="menu">
+      <a href="dashboard.html">Beranda</a>
+      <a class="active">Produk</a>
+      <a href="daftar-pesanan.html">Pesanan</a>
+      <a>Custom Order</a>
+      <a>Stok</a>
+      <a>User</a>
+    </div>
+  </div>
+  <div class="logout">Keluar</div>
+</div>
+
+<div class="main">
+
+<!-- 🔥 TOPBAR GLOBAL -->
+<div id="topbar"></div>
+
+<div class="breadcrumb">Katalog / Meja Tamu / Edit</div>
+<div class="title">Ubah Detail Produk</div>
+<div class="subtitle">"Setiap revisi adalah langkah menuju kesempurnaan struktural."</div>
+
+<div class="actions">
+  <button class="btn gray">Batal</button>
+  <button class="btn blue">Simpan Perubahan</button>
+</div>
+
+<div class="grid">
+
+<div>
+
+<!-- INFORMASI -->
+<div class="card">
+  <div class="card-header">
+    <img src="assets/informasi dasar.png">
+    <h3>Informasi Dasar</h3>
+  </div>
+
+  <div class="label">Nama Produk</div>
+  <input class="input" value="Meja Jati Kenari Signature - Limited Edition">
+
+  <div class="row">
+    <div style="flex:1">
+      <div class="label">Harga (IDR)</div>
+      <input class="input" value="Rp 12.500.000">
+    </div>
+    <div style="flex:1">
+      <div class="label">Kategori</div>
+      <input class="input" value="Meja Kayu Premium">
+    </div>
+  </div>
+
+  <div class="label">Deskripsi Produk</div>
+  <textarea class="input textarea">Meja Jati Kenari Signature dibuat dari kayu jati pilihan berusia lebih dari 50 tahun...</textarea>
+</div>
+
+<!-- SPESIFIKASI -->
+<div class="card">
+  <div class="card-header">
+    <img src="assets/stok.png">
+    <h3>Spesifikasi Teknis</h3>
+  </div>
+
+  <div class="label">Bahan Utama</div>
+  <input class="input" value="Kayu Jati Solid, Baja Karbon">
+
+  <div class="label">Variasi Warna</div>
+  <div class="colors">
+    <div class="dot" style="background:#5B3A29"></div>
+    <div class="dot" style="background:#C47A2C"></div>
+    <div class="dot" style="background:#000"></div>
+  </div>
+
+  <div class="row">
+    <div style="flex:1">
+      <div class="label">Dimensi</div>
+      <input class="input" value="120 x 80 x 45">
+    </div>
+    <div style="flex:1">
+      <div class="label">Jumlah Stok</div>
+      <input class="input" value="12">
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div>
+
+<!-- GALERI -->
+<div class="card gallery">
+  <div class="card-header">
+    <img src="assets/galeri.png">
+    <h3>Galeri Foto</h3>
+  </div>
+
+  <img src="assets/produk/meja.jpg">
+  <img src="assets/produk/meja2.jpg">
+  <div class="upload">+</div>
+</div>
+
+<!-- STATUS -->
+<div class="status-box">
+  <h3>Status Publikasi</h3>
+
+  <div class="toggle">
+    <span>Terlihat di Toko</span>
+    <div class="switch"></div>
+  </div>
+
+  <div class="toggle">
+    <span>Prioritas Tinggi</span>
+    <div class="switch" style="background:#9CA3AF"></div>
+  </div>
+
+  <p style="font-size:12px;margin-top:10px">Terakhir diubah 14 Oktober 2023</p>
+</div>
+
+<div class="delete">Hapus Produk Selamanya</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+fetch('topbar.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('topbar').innerHTML = data;
+  });
+</script>
+
+</body>
+</html>

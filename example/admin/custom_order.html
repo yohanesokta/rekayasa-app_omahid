@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Order Dashboard</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: white;
+  height: 100vh;
+  padding: 20px;
+  border-right: 1px solid #eee;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.menu {
+  list-style: none;
+}
+
+.menu li {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu li.active {
+  background: #2f5bea;
+  color: white;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  flex: 1;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  font-size: 14px;
+  color: gray;
+}
+
+.card p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* TABLE */
+.table-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  color: gray;
+}
+
+tr {
+  border-bottom: 1px solid #eee;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.process { background: #ffe5b4; color: #b36b00; }
+.done { background: #d4f8d4; color: green; }
+.pending { background: #ffd6d6; color: red; }
+.review { background: #e0e7ff; color: blue; }
+
+/* BOTTOM SECTION */
+.bottom {
+  display: flex;
+  gap: 20px;
+}
+
+.note {
+  flex: 2;
+  background: #2f5bea;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.note button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #2f5bea;
+  cursor: pointer;
+}
+
+.activity {
+  flex: 1;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 20px;
+  background: #eef2f7;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.footer input {
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.footer button {
+  padding: 10px 15px;
+  background: #2f5bea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>OMAHi.ID</h2>
+  <ul class="menu">
+    <li>Beranda</li>
+    <li>Produk</li>
+    <li>Pesanan</li>
+    <li class="active">Custom Order</li>
+    <li>Stok</li>
+    <li>User</li>
+  </ul>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HEADER -->
+  <div class="header">
+    <input type="text" class="search" placeholder="Cari pesanan...">
+    <button>Buat Pesanan</button>
+  </div>
+
+  <h2>Custom Order</h2>
+  <p style="color: gray; margin-bottom:15px;">Kelola permintaan desain furnitur khusus</p>
+
+  <!-- CARDS -->
+  <div class="cards">
+    <div class="card">
+      <h3>Total Permintaan</h3>
+      <p>128</p>
+    </div>
+    <div class="card">
+      <h3>Dalam Proses</h3>
+      <p>42</p>
+    </div>
+    <div class="card">
+      <h3>Menunggu Pembayaran</h3>
+      <p>15</p>
+    </div>
+    <div class="card">
+      <h3>Selesai Bulan Ini</h3>
+      <p>86</p>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-container">
+    <h3>Daftar Pesanan Kustom</h3>
+    <table>
+      <tr>
+        <th>Produk</th>
+        <th>Ukuran</th>
+        <th>Harga</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>Kursi Kerja</td>
+        <td>55x80 cm</td>
+        <td>Rp 3.450.000</td>
+        <td><span class="status process">Proses</span></td>
+      </tr>
+      <tr>
+        <td>Meja Makan</td>
+        <td>220x100 cm</td>
+        <td>Rp 12.800.000</td>
+        <td><span class="status done">Selesai</span></td>
+      </tr>
+      <tr>
+        <td>Lemari</td>
+        <td>120x40 cm</td>
+        <td>Rp 6.200.000</td>
+        <td><span class="status pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td>Tempat Tidur</td>
+        <td>200x200 cm</td>
+        <td>Rp 8.450.000</td>
+        <td><span class="status review">Review</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom">
+    <div class="note">
+      <h3>Ingat Detail Pengerjaan</h3>
+      <p>Pastikan bahan sesuai desain pelanggan</p>
+      <button>Buka Ledger</button>
+    </div>
+
+    <div class="activity">
+      <h3>Aktivitas Terbaru</h3>
+      <ul>
+        <li>Order baru masuk</li>
+        <li>Pembayaran diterima</li>
+        <li>Review selesai</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <h3>Subscribe Newsletter</h3>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+  </div>
+
+</div>
+
+</body>
+</html>

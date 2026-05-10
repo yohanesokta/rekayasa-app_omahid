@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manajemen User</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+/* LAYOUT */
+.container{
+    display:flex;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:240px;
+    height:100vh;
+    background:white;
+    padding:25px;
+    box-shadow:2px 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebar h2{
+    margin-bottom:30px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+.sidebar .active{
+    background:#1e3a8a;
+    color:white;
+}
+
+/* MAIN */
+.main{
+    flex:1;
+    padding:30px;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header h1{
+    font-size:32px;
+}
+
+.btn-add{
+    background:#1e3a8a;
+    color:white;
+    padding:12px 20px;
+    border:none;
+    border-radius:25px;
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    gap:20px;
+    margin-top:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    flex:1;
+}
+
+.card h2{
+    font-size:28px;
+}
+
+.card.blue{
+    background:#1e3a8a;
+    color:white;
+}
+
+/* TABLE */
+.table-box{
+    background:white;
+    margin-top:25px;
+    border-radius:20px;
+    padding:20px;
+}
+
+.table-header{
+    display:grid;
+    grid-template-columns:2fr 2fr 1fr 1fr 1fr;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:2fr 2fr 1fr 1fr 1fr;
+    padding:15px 0;
+    border-top:1px solid #eee;
+    align-items:center;
+}
+
+.name{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#ddd;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+}
+
+/* BADGE */
+.badge{
+    padding:5px 10px;
+    border-radius:10px;
+    font-size:12px;
+    display:inline-block;
+}
+
+.admin{background:#dbeafe;}
+.editor{background:#e0e7ff;}
+.viewer{background:#eee;}
+
+/* ACTION */
+.action{
+    display:flex;
+    gap:10px;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* PAGINATION */
+.pagination{
+    margin-top:15px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.page{
+    padding:6px 10px;
+    border-radius:50%;
+    background:#eee;
+}
+
+.page.active{
+    background:#1e3a8a;
+    color:white;
+}
+
+/* FOOTER */
+.footer{
+    margin-top:40px;
+    background:#dbeafe;
+    padding:30px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer input{
+    padding:10px;
+    width:250px;
+}
+
+.footer button{
+    padding:10px 15px;
+    background:#2563eb;
+    color:white;
+    border:none;
+}
+
+.footer-menu{
+    display:flex;
+    justify-content:space-around;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>OMAH.ID</h2>
+        <ul>
+            <li>Beranda</li>
+            <li>Produk</li>
+            <li>Pesanan</li>
+            <li>Custom Order</li>
+            <li>Stok</li>
+            <li class="active">User</li>
+        </ul>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="header">
+            <h1>Manajemen User</h1>
+            <button class="btn-add">+ Tambah User</button>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="card">
+                <p>Total Pengguna</p>
+                <h2>24</h2>
+            </div>
+
+            <div class="card">
+                <p>Administrator</p>
+                <h2>4</h2>
+            </div>
+
+            <div class="card blue">
+                <p>Aktivitas Sistem</p>
+                <h2>Stabil</h2>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-box">
+
+            <div class="table-header">
+                <div>Nama</div>
+                <div>Email</div>
+                <div>Peran</div>
+                <div>Tanggal</div>
+                <div>Aksi</div>
+            </div>
+
+            <!-- ROW -->
+            <div class="row">
+                <div class="name">
+                    <div class="avatar">AS</div>
+                    Aditya Saputra
+                </div>
+                <div>aditya@omah.id</div>
+                <div><span class="badge admin">Admin</span></div>
+                <div>12 Jan 2023</div>
+                <div class="action">✏️ 🗑️</div>
+            </div>
+
+            <div class="row">
+                <div class="name">
+                    <div class="avatar">BP</div>
+                    Budi Pratama
+                </div>
+                <div>budi@omah.id</div>
+                <div><span class="badge editor">Editor</span></div>
+                <div>05 Mar 2023</div>
+                <div class="action">✏️ 🗑️</div>
+            </div>
+
+            <div class="row">
+                <div class="name">
+                    <div class="avatar">CP</div>
+                    Citra Permata
+                </div>
+                <div>citra@omah.id</div>
+                <div><span class="badge viewer">Viewer</span></div>
+                <div>20 Jun 2023</div>
+                <div class="action">✏️ 🗑️</div>
+            </div>
+
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+            <div class="page active">1</div>
+            <div class="page">2</div>
+            <div class="page">3</div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-top">
+        <div>
+            <h2>Subscribe to our newsletter</h2>
+            <p>Don’t miss latest news & promotions</p>
+        </div>
+        <div>
+            <input type="text" placeholder="Enter your email">
+            <button>Subscribe</button>
+        </div>
+    </div>
+
+    <div class="footer-menu">
+        <div>
+            <h4>Store</h4>
+            <p>Email: omah@gmail.com</p>
+        </div>
+        <div>
+            <h4>Shop</h4>
+            <p>Chairs</p>
+        </div>
+        <div>
+            <h4>Customer</h4>
+            <p>Orders</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
