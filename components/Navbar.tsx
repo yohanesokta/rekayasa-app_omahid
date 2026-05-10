@@ -44,18 +44,16 @@ export default function Navbar() {
         </form>
 
         <div className="flex items-center gap-8">
-          <div className="flex items-center gap-2 cursor-pointer hidden sm:flex">
-            <MapPin className="w-5 h-5 text-slate-700" />
-            <span className="text-sm font-semibold text-slate-800">Track Order</span>
-          </div>
+          <Link href={user ? "/orders" : "/login"} className="flex items-center gap-2 cursor-pointer hidden sm:flex">
+            <MapPin className="w-5 h-5 text-slate-700 hover:text-[#0088FF]" />
+            <span className="text-sm font-semibold text-slate-800 hover:text-[#0088FF]">Track Order</span>
+          </Link>
           <div className="flex items-center gap-6">
-            <Link href={user ? "/profile" : "/login"} className="relative cursor-pointer">
-              <Heart className="w-6 h-6 text-slate-800" />
-              <span className="absolute -top-2 -right-2 bg-[#070864] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+            <Link href={user ? "/wishlist" : "/login"} className="relative cursor-pointer">
+              <Heart className="w-6 h-6 text-slate-800 hover:text-red-500 transition-colors" />
             </Link>
-            <Link href={user ? "/profile" : "/login"} className="relative cursor-pointer">
-              <ShoppingBag className="w-6 h-6 text-slate-800" />
-              <span className="absolute -top-2 -right-2 bg-[#070864] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">0</span>
+            <Link href={user ? "/cart" : "/login"} className="relative cursor-pointer">
+              <ShoppingBag className="w-6 h-6 text-slate-800 hover:text-[#0088FF] transition-colors" />
             </Link>
             
             {loading ? (

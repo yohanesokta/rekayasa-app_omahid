@@ -113,24 +113,33 @@ export default function ProfilePage() {
               </div>
               <ChevronRight className="w-4 h-4" />
             </button>
-            <button 
-              onClick={() => setActiveTab('cart')}
-              className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'cart' ? 'bg-[#070864] text-white shadow-lg shadow-blue-900/20' : 'bg-white text-slate-600 hover:bg-slate-100'}`}
+            <Link 
+              href="/orders"
+              className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all bg-white text-slate-600 hover:bg-slate-100"
+            >
+              <div className="flex items-center gap-3">
+                <ShoppingBag className="w-5 h-5" /> Pesanan Saya
+              </div>
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+            <Link 
+              href="/cart"
+              className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all bg-white text-slate-600 hover:bg-slate-100"
             >
               <div className="flex items-center gap-3">
                 <ShoppingBag className="w-5 h-5" /> Keranjang
               </div>
               <ChevronRight className="w-4 h-4" />
-            </button>
-            <button 
-              onClick={() => setActiveTab('wishlist')}
-              className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all ${activeTab === 'wishlist' ? 'bg-[#070864] text-white shadow-lg shadow-blue-900/20' : 'bg-white text-slate-600 hover:bg-slate-100'}`}
+            </Link>
+            <Link 
+              href="/wishlist"
+              className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold transition-all bg-white text-slate-600 hover:bg-slate-100"
             >
               <div className="flex items-center gap-3">
                 <Heart className="w-5 h-5" /> Wishlist
               </div>
               <ChevronRight className="w-4 h-4" />
-            </button>
+            </Link>
           </aside>
 
           {/* Content Area */}
@@ -194,31 +203,6 @@ export default function ProfilePage() {
               </div>
             )}
 
-            {activeTab === 'cart' && (
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-[#070864]">Keranjang Belanja</h2>
-                <div className="flex flex-col items-center justify-center py-20 text-center space-y-4">
-                  <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center">
-                    <ShoppingBag className="w-10 h-10 text-slate-300" />
-                  </div>
-                  <p className="text-slate-500 font-medium">Keranjang Anda masih kosong</p>
-                  <Link href="/" className="text-[#070864] font-bold hover:underline">Mulai Belanja Sekarang</Link>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'wishlist' && (
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-[#070864]">Wishlist</h2>
-                <div className="flex flex-col items-center justify-center py-20 text-center space-y-4">
-                  <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center">
-                    <Heart className="w-10 h-10 text-slate-300" />
-                  </div>
-                  <p className="text-slate-500 font-medium">Belum ada produk favorit Anda</p>
-                  <Link href="/" className="text-[#070864] font-bold hover:underline">Jelajahi Produk</Link>
-                </div>
-              </div>
-            )}
           </section>
         </div>
       </main>
