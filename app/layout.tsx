@@ -6,12 +6,12 @@ import NextTopLoader from 'nextjs-toploader';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets2: ["latin"],
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets2: ["latin"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
