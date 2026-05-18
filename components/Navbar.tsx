@@ -76,10 +76,10 @@ export default function Navbar() {
 
       {/* Navigation Links */}
       <div className="max-w-7xl mx-auto px-6 pb-6 flex gap-8">
-        <Link href="#" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">Katalog Produk</Link>
-        <Link href="#" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">About Us</Link>
-        <Link href="#" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">Services</Link>
-        <Link href="#" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">Payment</Link>
+        <Link href="/katalog" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">Katalog Produk</Link>
+        <Link href="/about" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">About Us</Link>
+        <Link href="/services" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">Services</Link>
+        <Link href="/payment" className="text-sm font-bold text-[#070864] tracking-wide hover:text-[#0088FF] transition-colors uppercase">Payment</Link>
       </div>
     </header>
   )

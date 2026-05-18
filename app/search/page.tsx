@@ -2,6 +2,9 @@ import { Search, MapPin, Heart, ShoppingBag, User, CreditCard } from 'lucide-rea
 import { prisma } from '@/lib/prisma'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
+
+export const dynamic = 'force-dynamic'
+
 export default async function SearchPage({
   searchParams,
 }: {
@@ -86,8 +89,9 @@ export default async function SearchPage({
             <div>
               <h4 className="font-bold text-slate-900 mb-6">BELANJA</h4>
               <ul className="space-y-3">
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Kursi</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Tempat Tidur</Link></li>
+                <li><Link href="/katalog" className="text-slate-600 text-sm hover:text-slate-900">Katalog</Link></li>
+                <li><Link href="/services" className="text-slate-600 text-sm hover:text-slate-900">Layanan</Link></li>
+                <li><Link href="/about" className="text-slate-600 text-sm hover:text-slate-900">Tentang Kami</Link></li>
               </ul>
             </div>
           </div>

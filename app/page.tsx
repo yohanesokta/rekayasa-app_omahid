@@ -1,14 +1,24 @@
-import { Search, MapPin, Heart, ShoppingBag, User, ArrowRight, CreditCard, ShoppingCart } from 'lucide-react'
+import { Search, MapPin, Heart, ShoppingBag, User, ArrowRight, CreditCard, ShoppingCart, Sofa, Bed, Lamp, Box, LayoutGrid, Utensils, Monitor, Frame } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
-  const products = await prisma.product.findMany({
-    include: { images: true },
-    orderBy: { createdAt: 'desc' },
-    take: 8
-  })
+  const [products, categories] = await Promise.all([
+    prisma.product.findMany({
+      include: { images: true },
+      orderBy: { createdAt: 'desc' },
+      take: 8
+    }),
+    prisma.product.groupBy({
+      by: ['category'],
+      _count: { id: true },
+      orderBy: { _count: { id: 'desc' } },
+      take: 4
+    })
+  ])
 
   const heroProduct = products[0]
 
@@ -55,16 +65,20 @@ export default async function Home() {
         <section className="max-w-7xl mx-auto px-6 py-20">
           <div className="flex items-center justify-between mb-10">
             <h2 className="text-4xl font-bold text-slate-900">Shop by Categories</h2>
-            <button className="px-6 py-2 border border-slate-300 font-semibold text-sm hover:bg-slate-50 transition-colors">
+            <Link href="/katalog" className="px-6 py-2 border border-slate-300 font-semibold text-sm hover:bg-slate-50 transition-colors">
               View all
-            </button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <CategoryCard title="Kasur" subtitle="42 products" icon="KASUR" />
-            <CategoryCard title="meja makan set" subtitle="16 products" icon="MEJA MAKAN SET" />
-            <CategoryCard title="rak serbaguna" subtitle="42 products" icon="RAK SERBAGUNA" />
-            <CategoryCard title="meja rias" subtitle="42 products" icon="MEJA RIAS" />
+            {categories.map((cat) => (
+              <CategoryCard 
+                key={cat.category || 'unknown'}
+                title={cat.category || 'Lainnya'} 
+                subtitle={`${cat._count.id} products`} 
+                category={cat.category || ''}
+              />
+            ))}
           </div>
         </section>
 
@@ -154,24 +168,16 @@ export default async function Home() {
               <p className="text-slate-600 text-sm">Jl.Telang Indah gg.II</p>
               <p className="text-slate-600 text-sm"><span className="font-semibold text-slate-900">Email:</span> Omah.id@gmail.co.id</p>
               <p className="text-slate-600 text-sm"><span className="font-semibold text-slate-900">Phone:</span> (928) 630-9272</p>
-
-              {/* <div className="flex gap-4 pt-4">
-                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white cursor-pointer"><Facebook className="w-4 h-4" /></div>
-                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white cursor-pointer"><Twitter className="w-4 h-4" /></div>
-                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white cursor-pointer"><Instagram className="w-4 h-4" /></div>
-                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white cursor-pointer"><Youtube className="w-4 h-4" /></div>
-              </div> */}
             </div>
 
             {/* Col 2 */}
             <div>
               <h4 className="font-bold text-slate-900 mb-6">BELANJA</h4>
               <ul className="space-y-3">
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Kursi</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Tempat Tidur</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Sofa</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Lemari</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Kursi Santai</Link></li>
+                <li><Link href="/katalog" className="text-slate-600 text-sm hover:text-slate-900">Katalog</Link></li>
+                <li><Link href="/about" className="text-slate-600 text-sm hover:text-slate-900">Tentang Kami</Link></li>
+                <li><Link href="/services" className="text-slate-600 text-sm hover:text-slate-900">Layanan</Link></li>
+                <li><Link href="/payment" className="text-slate-600 text-sm hover:text-slate-900">Pembayaran</Link></li>
               </ul>
             </div>
 
@@ -179,10 +185,10 @@ export default async function Home() {
             <div>
               <h4 className="font-bold text-slate-900 mb-6">Customer service</h4>
               <ul className="space-y-3">
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Pesanan</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Alamat</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Pengembalian</Link></li>
-                <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">Detail Akun</Link></li>
+                <li><Link href="/orders" className="text-slate-600 text-sm hover:text-slate-900">Pesanan</Link></li>
+                <li><Link href="/services" className="text-slate-600 text-sm hover:text-slate-900">Layanan</Link></li>
+                <li><Link href="/payment" className="text-slate-600 text-sm hover:text-slate-900">Pembayaran</Link></li>
+                <li><Link href="/about" className="text-slate-600 text-sm hover:text-slate-900">Tentang Kami</Link></li>
                 <li><Link href="#" className="text-slate-600 text-sm hover:text-slate-900">FAQ</Link></li>
               </ul>
             </div>
@@ -214,19 +220,31 @@ export default async function Home() {
   )
 }
 
-function CategoryCard({ title, subtitle, icon }: { title: string, subtitle: string, icon: string }) {
+function CategoryCard({ title, subtitle, category }: { title: string, subtitle: string, category: string }) {
+  const getIcon = (cat: string) => {
+    const safeCat = cat || ''
+    const c = safeCat.toUpperCase()
+    if (c.includes('SOFA')) return <Sofa className="w-10 h-10" />
+    if (c.includes('TIDUR') || c.includes('KASUR')) return <Bed className="w-10 h-10" />
+    if (c.includes('MEJA')) return <Utensils className="w-10 h-10" />
+    if (c.includes('LAMPU')) return <Lamp className="w-10 h-10" />
+    if (c.includes('RAK')) return <Box className="w-10 h-10" />
+    if (c.includes('LEMARI')) return <LayoutGrid className="w-10 h-10" />
+    if (c.includes('DEKORASI')) return <Frame className="w-10 h-10" />
+    return <LayoutGrid className="w-10 h-10" />
+  }
+
   return (
-    <div>
-      <div className="aspect-square border border-slate-200 rounded-lg flex flex-col items-center justify-center p-6 hover:shadow-lg transition-shadow cursor-pointer bg-white mb-4">
-        {/* Placeholder for the icon */}
-        <div className="w-20 h-20 mb-4 bg-slate-50 flex items-center justify-center rounded-lg">
-          <span className="text-xs text-slate-400 font-bold text-center leading-tight">{icon}</span>
+    <Link href={`/search?q=${category}`} className="group block">
+      <div className="aspect-square border border-slate-200 rounded-3xl flex flex-col items-center justify-center p-6 group-hover:shadow-xl group-hover:shadow-blue-900/5 group-hover:border-[#0088FF] transition-all bg-white mb-4">
+        <div className="w-20 h-20 mb-4 bg-slate-50 group-hover:bg-blue-50 flex items-center justify-center rounded-2xl text-slate-400 group-hover:text-[#0088FF] transition-colors">
+          {getIcon(category)}
         </div>
       </div>
       <div className="px-2">
-        <h3 className="font-bold text-slate-900 capitalize text-lg">{title}</h3>
+        <h3 className="font-bold text-slate-900 capitalize text-lg group-hover:text-[#0088FF] transition-colors">{(title || '').toLowerCase()}</h3>
         <p className="text-slate-500 text-sm mt-1">{subtitle}</p>
       </div>
-    </div>
+    </Link>
   )
 }
