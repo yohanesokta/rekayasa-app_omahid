@@ -5,10 +5,38 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import OrderCompleteButton from './OrderCompleteButton'
 
-export default async function UserOrdersPage() {
+export default async function UserOrdersPage({ searchParams }: { searchParams: Promise<{ order_id?: string, transaction_status?: string }> }) {
   const session = await getSession()
   if (!session?.user) {
     redirect('/login')
+  }
+
+  const { order_id, transaction_status } = await searchParams
+
+  // Handle Midtrans Redirect Fallback
+  if (order_id && (transaction_status === 'settlement' || transaction_status === 'capture')) {
+    const order = await prisma.order.findUnique({ where: { id: order_id } })
+    if (order && order.status === 'PENDING') {
+      // Re-verify with Midtrans API to be safe
+      const authString = Buffer.from(process.env.PAY_Server_Key + ':').toString('base64');
+      try {
+        const response = await fetch(`https://api.sandbox.midtrans.com/v2/${order_id}/status`, {
+          headers: {
+            'Authorization': `Basic ${authString}`,
+            'Accept': 'application/json'
+          }
+        })
+        const data = await response.json()
+        if (data.transaction_status === 'settlement' || data.transaction_status === 'capture') {
+          await prisma.order.update({
+            where: { id: order_id },
+            data: { status: 'PAID' }
+          })
+        }
+      } catch (error) {
+        console.error('Failed to verify status on redirect:', error)
+      }
+    }
   }
 
   const orders = await prisma.order.findMany({
