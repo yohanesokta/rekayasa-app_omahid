@@ -107,7 +107,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             )}
 
             {/* Actions */}
-            <ProductActions productId={product.id} />
+            <ProductActions 
+              productId={product.id} 
+              productName={product.name} 
+              imageUrl={mainImage} 
+            />
           </div>
         </div>
 

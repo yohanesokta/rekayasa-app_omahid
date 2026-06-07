@@ -5,9 +5,12 @@ import { prisma } from '@/lib/prisma'
 
 export const dynamic = 'force-dynamic'
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
+  const { category: activeCategory } = await searchParams
+
   const [products, categories] = await Promise.all([
     prisma.product.findMany({
+      where: activeCategory && activeCategory !== 'All' ? { category: { contains: activeCategory, mode: 'insensitive' } } : {},
       include: { images: true },
       orderBy: { createdAt: 'desc' },
       take: 8
@@ -87,12 +90,20 @@ export default async function Home() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-8">New Products</h2>
             <div className="flex flex-wrap justify-center gap-8 text-lg font-medium text-slate-800">
-              <span className="border-b-2 border-slate-900 pb-1 cursor-pointer">All</span>
-              <span className="text-slate-500 cursor-pointer hover:text-slate-900">Chairs</span>
-              <span className="text-slate-500 cursor-pointer hover:text-slate-900">Tables</span>
-              <span className="text-slate-500 cursor-pointer hover:text-slate-900">Armchairs</span>
-              <span className="text-slate-500 cursor-pointer hover:text-slate-900">Sofas</span>
-              <span className="text-slate-500 cursor-pointer hover:text-slate-900">Decor</span>
+              {['All', 'Chairs', 'Tables', 'Armchairs', 'Sofas', 'Decor'].map((cat) => (
+                <Link
+                  key={cat}
+                  href={`/?category=${cat}`}
+                  scroll={false}
+                  className={`${
+                    (activeCategory || 'All') === cat
+                      ? 'border-b-2 border-slate-900 text-slate-900'
+                      : 'text-slate-500 hover:text-slate-900'
+                  } pb-1 cursor-pointer transition-colors`}
+                >
+                  {cat}
+                </Link>
+              ))}
             </div>
           </div>
 

@@ -26,12 +26,14 @@ export default function ServicesPage() {
             description="Setiap produk kami dilengkapi dengan garansi struktur dan material untuk menjamin kepuasan Anda."
             color="bg-green-50 text-green-600"
           />
-          <ServiceCard 
-            icon={<PenTool className="w-8 h-8" />}
-            title="Custom Order Furniture"
-            description="Ingin furniture dengan desain sendiri? Kami melayani pembuatan produk kustom sesuai spesifikasi Anda."
-            color="bg-purple-50 text-purple-600"
-          />
+          <Link href="/custom-order" className="block">
+            <ServiceCard 
+              icon={<PenTool className="w-8 h-8" />}
+              title="Custom Order Furniture"
+              description="Ingin furniture dengan desain sendiri? Kami melayani pembuatan produk kustom sesuai spesifikasi Anda."
+              color="bg-purple-50 text-purple-600"
+            />
+          </Link>
           <ServiceCard 
             icon={<Headphones className="w-8 h-8" />}
             title="Konsultasi Gratis"

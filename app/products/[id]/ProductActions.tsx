@@ -6,7 +6,15 @@ import { toggleWishlist } from '@/app/wishlist/actions'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-export default function ProductActions({ productId }: { productId: string }) {
+export default function ProductActions({ 
+  productId, 
+  productName, 
+  imageUrl 
+}: { 
+  productId: string, 
+  productName?: string, 
+  imageUrl?: string 
+}) {
   const router = useRouter()
   const [loadingCart, setLoadingCart] = useState(false)
   const [loadingWishlist, setLoadingWishlist] = useState(false)
@@ -14,6 +22,13 @@ export default function ProductActions({ productId }: { productId: string }) {
   const handleBuyNow = () => {
     // Navigate directly to checkout page with this item as a query param
     router.push(`/checkout?productId=${productId}`)
+  }
+
+  const handleCustomOrder = () => {
+    const params = new URLSearchParams()
+    if (productName) params.set('productName', productName)
+    if (imageUrl) params.set('imageUrl', imageUrl)
+    router.push(`/custom-order?${params.toString()}`)
   }
 
   const handleAddToCart = async () => {
@@ -39,28 +54,37 @@ export default function ProductActions({ productId }: { productId: string }) {
   }
 
   return (
-    <div className="flex items-center gap-3 pt-2">
+    <div className="flex flex-col gap-3 pt-2">
+      <div className="flex items-center gap-3">
+        <button
+          onClick={handleBuyNow}
+          className="flex-1 h-14 bg-green-600 hover:bg-green-700 text-white font-black text-sm rounded-xl tracking-widest transition-all shadow-lg shadow-green-400/30"
+        >
+          BELI SEKARANG
+        </button>
+        <button
+          onClick={handleAddToCart}
+          disabled={loadingCart}
+          className="w-14 h-14 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center text-[#070864] hover:border-[#0088FF] hover:text-[#0088FF] transition-all shadow-sm disabled:opacity-50"
+          title="Tambah ke Keranjang"
+        >
+          <ShoppingCart className="w-5 h-5" />
+        </button>
+        <button
+          onClick={handleToggleWishlist}
+          disabled={loadingWishlist}
+          className="w-14 h-14 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center text-slate-400 hover:border-red-300 hover:text-red-500 transition-all shadow-sm disabled:opacity-50"
+          title="Wishlist"
+        >
+          <Heart className="w-5 h-5" />
+        </button>
+      </div>
+
       <button
-        onClick={handleBuyNow}
-        className="flex-1 h-14 bg-green-600 hover:bg-green-700 text-white font-black text-sm rounded-xl tracking-widest transition-all shadow-lg shadow-green-400/30"
+        onClick={handleCustomOrder}
+        className="w-full h-12 bg-white border-2 border-[#070864] text-[#070864] font-black text-xs rounded-xl tracking-widest hover:bg-[#070864] hover:text-white transition-all uppercase"
       >
-        BELI SEKARANG
-      </button>
-      <button
-        onClick={handleAddToCart}
-        disabled={loadingCart}
-        className="w-14 h-14 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center text-[#070864] hover:border-[#0088FF] hover:text-[#0088FF] transition-all shadow-sm disabled:opacity-50"
-        title="Tambah ke Keranjang"
-      >
-        <ShoppingCart className="w-5 h-5" />
-      </button>
-      <button
-        onClick={handleToggleWishlist}
-        disabled={loadingWishlist}
-        className="w-14 h-14 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center text-slate-400 hover:border-red-300 hover:text-red-500 transition-all shadow-sm disabled:opacity-50"
-        title="Wishlist"
-      >
-        <Heart className="w-5 h-5" />
+        Custom Order Produk Ini
       </button>
     </div>
   )
