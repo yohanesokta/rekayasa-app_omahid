@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import { Truck, ShieldCheck, PenTool, Headphones } from 'lucide-react'
+import Link from 'next/link'
 
 export default function ServicesPage() {
   return (
