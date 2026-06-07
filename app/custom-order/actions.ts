@@ -14,10 +14,10 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_SECRET_KEY ||
                     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || ''
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-export async function createCustomOrder(formData: FormData) {
+export async function createCustomOrder(formData: FormData): Promise<void> {
   const session = await getSession()
   if (!session?.user) {
-    return { error: 'Unauthorized' }
+    redirect('/login?callbackUrl=/custom-order')
   }
 
   const productName = formData.get('productName') as string
@@ -59,7 +59,9 @@ export async function createCustomOrder(formData: FormData) {
   }
 
   if (!productName || !description) {
-    return { error: 'Nama produk dan deskripsi wajib diisi.' }
+    // We cannot return an object to a form action without using useActionState (which requires client component)
+    // For simplicity in server component form, we'll just redirect or handle error differently
+    redirect('/custom-order?error=missing_fields')
   }
 
   // Generate unique ID like ORD-00124-C
