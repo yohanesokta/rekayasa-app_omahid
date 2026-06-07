@@ -154,7 +154,7 @@ export default async function AdminOrdersPage({
                       'bg-red-50 text-red-500'
                     }`}>
                       {order.status === 'PENDING' ? 'Menunggu' :
-                       order.status === 'PAID' ? 'Dibayar' :
+                       order.status === 'PAID' ? 'Payment Berhasil' :
                        order.status === 'PROCESSING' ? 'Diproses' :
                        order.status === 'SHIPPED' ? 'Pengiriman' :
                        order.status === 'COMPLETED' ? 'Selesai' :

@@ -9,10 +9,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { items, customNotes } = await req.json();
+    const { items, customNotes, shippingAddress } = await req.json();
     
     if (!items || items.length === 0) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 });
+    }
+
+    if (!shippingAddress) {
+      return NextResponse.json({ error: 'Shipping address is required' }, { status: 400 });
     }
 
     // Calculate total amount and prepare order items
@@ -44,6 +48,7 @@ export async function POST(req: Request) {
         status: 'PENDING',
         totalAmount,
         customNotes,
+        shippingAddress,
         items: {
           create: orderItemsData,
         }

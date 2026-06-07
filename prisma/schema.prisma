@@ -103,6 +103,7 @@ model Order {
   paymentUrl      String?
   midtransOrderId String?
   trackingNumber  String?
+  shippingAddress String?
   customNotes     String?
   items           OrderItem[]
   shipmentUpdates ShipmentUpdate[]

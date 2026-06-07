@@ -36,7 +36,6 @@ export default function OrderActionForm({ order }: { order: any }) {
           <option value="PAID">PAID</option>
           <option value="PROCESSING">PROCESSING (Proses Pembuatan/Pre-Order)</option>
           <option value="SHIPPED">SHIPPED (Sedang Dikirim)</option>
-          <option value="COMPLETED">COMPLETED (Selesai)</option>
           <option value="CANCELED">CANCELED (Dibatalkan)</option>
         </select>
       </div>

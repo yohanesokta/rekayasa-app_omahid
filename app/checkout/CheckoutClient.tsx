@@ -5,12 +5,18 @@ import { useRouter } from 'next/navigation'
 
 export default function CheckoutClient({ items }: { items: any[] }) {
   const router = useRouter()
+  const [shippingAddress, setShippingAddress] = useState('')
   const [customNotes, setCustomNotes] = useState('')
   const [loading, setLoading] = useState(false)
 
   const totalAmount = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0)
 
   const handlePay = async () => {
+    if (!shippingAddress.trim()) {
+      alert('Silakan isi alamat pengiriman terlebih dahulu.')
+      return
+    }
+
     setLoading(true)
     try {
       const res = await fetch('/api/checkout', {
@@ -18,6 +24,7 @@ export default function CheckoutClient({ items }: { items: any[] }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           items: items.map(i => ({ productId: i.productId, quantity: i.quantity })),
+          shippingAddress,
           customNotes
         })
       })
@@ -63,6 +70,18 @@ export default function CheckoutClient({ items }: { items: any[] }) {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="bg-white rounded-[32px] p-8 shadow-sm">
+          <h2 className="text-xl font-black text-[#070864] mb-4">Alamat Pengiriman</h2>
+          <p className="text-sm text-slate-500 mb-4">Silakan masukkan alamat lengkap untuk pengiriman pesanan Anda.</p>
+          <textarea
+            value={shippingAddress}
+            onChange={(e) => setShippingAddress(e.target.value)}
+            rows={4}
+            placeholder="Contoh: Jl. Merdeka No. 123, Jakarta Pusat, 10110"
+            className="w-full p-4 rounded-xl border-2 border-slate-200 bg-white focus:border-[#0088FF] focus:ring-0 outline-none text-sm text-slate-700 placeholder:text-slate-300 transition-all resize-none mb-4"
+          />
         </div>
 
         <div className="bg-white rounded-[32px] p-8 shadow-sm">

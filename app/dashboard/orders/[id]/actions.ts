@@ -10,6 +10,16 @@ export async function updateOrderStatus(orderId: string, status: any, trackingNu
     return { error: 'Unauthorized' }
   }
 
+  // Requirement 3: Mandatory tracking number for SHIPPED status
+  if (status === 'SHIPPED' && (!trackingNumber || trackingNumber.trim() === '')) {
+    return { error: 'Nomor resi wajib diisi untuk status Pengiriman.' }
+  }
+
+  // Requirement 4: Admin cannot set status to COMPLETED
+  if (status === 'COMPLETED') {
+    return { error: 'Admin tidak dapat mengubah status menjadi Diterima secara manual. Hanya pembeli yang dapat mengonfirmasi penerimaan pesanan.' }
+  }
+
   await prisma.order.update({
     where: { id: orderId },
     data: {

@@ -3,6 +3,7 @@ import { getSession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
+import OrderCompleteButton from './OrderCompleteButton'
 
 export default async function UserOrdersPage() {
   const session = await getSession()
@@ -84,7 +85,7 @@ export default async function UserOrdersPage() {
                   ))}
                 </div>
 
-                {(order.trackingNumber || order.status === 'PENDING') && (
+                {(order.trackingNumber || order.status === 'PENDING' || order.status === 'SHIPPED') && (
                   <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 flex flex-wrap justify-between items-center gap-4 mb-4">
                     {order.trackingNumber && (
                       <div>
@@ -92,11 +93,16 @@ export default async function UserOrdersPage() {
                         <p className="font-mono text-slate-800 font-bold">{order.trackingNumber}</p>
                       </div>
                     )}
-                    {order.status === 'PENDING' && order.paymentUrl && (
-                      <a href={order.paymentUrl} className="bg-[#070864] hover:bg-[#0088FF] text-white px-6 py-2 rounded-lg font-bold text-sm transition-all ml-auto">
-                        LANJUTKAN PEMBAYARAN
-                      </a>
-                    )}
+                    <div className="ml-auto flex gap-2">
+                      {order.status === 'PENDING' && order.paymentUrl && (
+                        <a href={order.paymentUrl} className="bg-[#070864] hover:bg-[#0088FF] text-white px-6 py-2 rounded-lg font-bold text-sm transition-all">
+                          LANJUTKAN PEMBAYARAN
+                        </a>
+                      )}
+                      {order.status === 'SHIPPED' && (
+                        <OrderCompleteButton orderId={order.id} />
+                      )}
+                    </div>
                   </div>
                 )}
 

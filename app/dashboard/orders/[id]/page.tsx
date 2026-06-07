@@ -74,6 +74,13 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
               </div>
             </div>
           )}
+
+          <div>
+            <h3 className="text-xl font-black text-[#070864] mb-2">Alamat Pengiriman</h3>
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 text-sm text-slate-700 whitespace-pre-wrap">
+              {order.shippingAddress || 'Tidak ada alamat pengiriman'}
+            </div>
+          </div>
         </div>
 
         {/* Right: Actions */}
